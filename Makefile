@@ -10,21 +10,21 @@ help:
 	@echo "  make clean      - Remove node_modules and .next"
 
 install:
-	cd storefront && npm install
+	cd storefront && bun install
 
 # Fast dev mode with Turbopack (5-10x faster than webpack)
 dev:
-	cd storefront && npm run dev
+	cd storefront && bun run dev
 
 # Production build + start locally (fastest, like Fly.io)
 dev-prod:
-	cd storefront && npm run dev:prod
+	cd storefront && bun run dev:prod
 
 build:
-	cd storefront && npm run build
+	cd storefront && bun run build
 
 start:
-	cd storefront && npm run start
+	cd storefront && bun run start
 
 clean:
 	rm -rf storefront/node_modules storefront/.next
