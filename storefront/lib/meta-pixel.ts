@@ -200,16 +200,13 @@ export async function fetchMetaPixelConfig(): Promise<MetaPixelPublicConfig | nu
   const storeId = process.env.NEXT_PUBLIC_STORE_ID
   const publishableKey = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
 
-  if (!storeId) {
+  if (!storeId || !publishableKey) {
     return null
   }
 
   const headers: Record<string, string> = {
     'X-Store-Environment-ID': storeId,
-  }
-
-  if (publishableKey) {
-    headers['x-publishable-api-key'] = publishableKey
+    'x-publishable-api-key': publishableKey,
   }
 
   const response = await fetch(`${backendUrl}/store/meta-pixel/config`, {

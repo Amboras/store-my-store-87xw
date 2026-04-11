@@ -127,7 +127,7 @@ class AnalyticsTracker {
 
   init(): void {
     if (this.isInitialized) return
-    if (!this.storeId || !this.endpoint) return
+    if (!this.storeId || !this.endpoint || !this.publishableKey) return
     if (!hasAnalyticsConsent()) return
 
     this.isInitialized = true
@@ -264,7 +264,7 @@ class AnalyticsTracker {
       headers: {
         'Content-Type': 'application/json',
         'X-Store-Environment-ID': this.storeId,
-        ...(this.publishableKey ? { 'x-publishable-api-key': this.publishableKey } : {}),
+        'x-publishable-api-key': this.publishableKey,
       },
       body: JSON.stringify(payload),
       keepalive: true,
@@ -289,7 +289,7 @@ class AnalyticsTracker {
       headers: {
         'Content-Type': 'application/json',
         'X-Store-Environment-ID': this.storeId,
-        ...(this.publishableKey ? { 'x-publishable-api-key': this.publishableKey } : {}),
+        'x-publishable-api-key': this.publishableKey,
       },
       body: JSON.stringify(payload),
       keepalive: true,
