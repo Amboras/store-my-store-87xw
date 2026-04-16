@@ -1,6 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Lato, Inter } from 'next/font/google'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Providers } from './providers'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
@@ -14,26 +14,19 @@ import dynamic from 'next/dynamic'
 
 const CookieConsent = dynamic(() => import('@/components/cookie-consent'))
 
-const heading = Lato({
+const sans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-heading',
-  display: 'swap',
-})
-
-const body = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-body',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Store — Modern Commerce',
-    template: '%s | Store',
+    default: 'FoldPro — Perchas Plegables Premium',
+    template: '%s | FoldPro',
   },
-  description: 'Discover curated products crafted with care. A modern ecommerce experience.',
+  description: 'Perchas plegables de alta calidad. Compactas, resistentes y elegantes para organizar tu ropa en cualquier lugar.',
 }
 
 export default function RootLayout({
@@ -42,11 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${heading.variable} ${body.variable}`} suppressHydrationWarning>
+    <html lang="es" className={`${sans.variable}`} suppressHydrationWarning>
       <head>
-        {/* PostHog cross-origin iframe recording shim — records DOM via rrweb and forwards
-            events to the parent window (admin dashboard) for session replay.
-            Uses rrweb@2.0.0-alpha.20 (same version proven in ecomcoder production). */}
         <script dangerouslySetInnerHTML={{ __html: `
 (function() {
   'use strict';
